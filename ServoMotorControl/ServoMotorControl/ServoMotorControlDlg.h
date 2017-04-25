@@ -7,6 +7,7 @@
 #include "ClickEdit.h"
 #include<map>
 #include "afxext.h"
+#include "CameraInterface.h"
 
 using namespace std;
 class CServoMotorControlDlg : public CDialogEx
@@ -34,6 +35,7 @@ private:
 	map<UINT, ClickEdit*>  m_edit;
 	CBitmapButton m_m2044;
 	KeyBoard m_board;
+	CameraInterface* m_camera;
 
 	void risingEdge(const CString str);
 	void set_value(const CString str, const UINT data);
@@ -75,6 +77,7 @@ public:
 	afx_msg void turnOFF();//关机按钮事件
 	virtual void OnOK();
 	virtual void OnCancel();
+	afx_msg void camera();
 };
 
 

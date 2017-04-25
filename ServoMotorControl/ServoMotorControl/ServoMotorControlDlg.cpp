@@ -3,13 +3,12 @@
 #include "ServoMotorControlDlg.h"
 #include "afxdialogex.h"
 
-
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
 CServoMotorControlDlg::CServoMotorControlDlg(CWnd* pParent)
-: CDialogEx(CServoMotorControlDlg::IDD, pParent), m_motorState(false)
+: CDialogEx(CServoMotorControlDlg::IDD, pParent), m_motorState(false), m_camera(NULL)
 {
 	m_button.clear();
 	m_edit.clear();
@@ -107,6 +106,7 @@ BEGIN_MESSAGE_MAP(CServoMotorControlDlg, CDialogEx)
 	ON_WM_CLOSE()
 	ON_BN_CLICKED(IDC_BUTTON44, &CServoMotorControlDlg::turnON)
 	ON_BN_CLICKED(IDC_BUTTON45, &CServoMotorControlDlg::turnOFF)
+	ON_BN_CLICKED(IDC_BUTTON46, &CServoMotorControlDlg::camera)
 END_MESSAGE_MAP()
 
 BOOL CServoMotorControlDlg::OnInitDialog()
@@ -712,4 +712,16 @@ void CServoMotorControlDlg::OnOK()
 void CServoMotorControlDlg::OnCancel()
 {
 	exit(0);
+}
+
+
+void CServoMotorControlDlg::camera()
+{
+	if (m_camera == NULL)
+	{
+		m_camera = new CameraInterface;
+		m_camera->Create(IDD_DIALOG7);
+	}
+	
+	m_camera->ShowWindow(SW_MAXIMIZE);
 }
