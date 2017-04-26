@@ -1,5 +1,6 @@
 #pragma once
 #include <FlyCapture2.h>
+#include <opencv/cv.h>
 
 class Camera
 {
@@ -8,6 +9,9 @@ public:
 	~Camera();
 
 	int init(); //相机初始化
+	int captureImages(CWnd* pWnd); //捕获图片
+	void ShowMatImgToWnd(CWnd* pWnd, cv::Mat img);
+
 private:
 	FlyCapture2::BusManager m_busMgr; //相机总线
 	unsigned int  m_numCameras; //总线上相机的个数

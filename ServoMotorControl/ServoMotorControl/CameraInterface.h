@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Camera.h"
 
 // CameraInterface 对话框
 
@@ -13,6 +14,8 @@ public:
 
 // 对话框数据
 	enum { IDD = IDD_DIALOG7 };
+private:
+	Camera* m_camera;
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
@@ -21,4 +24,5 @@ protected:
 public:
 	afx_msg void StartCollecting();
 	afx_msg void EndAcquisition();
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };
