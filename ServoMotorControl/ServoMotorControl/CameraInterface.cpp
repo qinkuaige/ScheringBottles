@@ -42,24 +42,34 @@ void CameraInterface::StartCollecting()
 	{
 		m_camera = new Camera;
 		m_camera->init();
-		SetTimer(1, 50, NULL);
 	}
+
+	m_camera->captureImages(1);
+	CImage* imge = m_camera->get_image();
+   // CImage* imge = new CImage;
+	//imge->Load(_T("E:\\资料\\文档\\证件照\\blue.jpg"));
+	CRect rect;
+	CImage * img = new CImage;
+	GetDlgItem(IDC_STATIC1)->GetClientRect(&rect);
+	Camera::Stretchimage(imge, img,rect.Height(), rect.Width());
+	int cx = img->GetWidth();
+	int cy = img->GetHeight();
+	ScreenToClient(&rect);// 将客户区选中到Picture控件表示的矩形区域内
+	GetDlgItem(IDC_STATIC1)->MoveWindow(rect.left, rect.top, cx, cy, TRUE);// 将窗口移动到Picture
+	GetDlgItem(IDC_STATIC1)->GetClientRect(&rect);// 获得pictrue控件所在的矩形区域
+	CDC *pDC = GetDlgItem(IDC_STATIC1)->GetDC();// 获得pictrue控件的DC
+	img->Draw(pDC->m_hDC, rect);// 将图片画到Picture控件表示的矩形区域
+	ReleaseDC(pDC);// 释放picture控件的DC
+	delete img;
+	delete imge;
+	img = NULL ;
+	return;
 }
 
 
 void CameraInterface::EndAcquisition()
 {
-	if (m_camera != NULL)
-	{
-		delete m_camera;
-		m_camera = NULL;
-	}
-}
-
-
-void CameraInterface::OnTimer(UINT_PTR nIDEvent)
-{
 	
-	m_camera->captureImages(GetDlgItem(IDC_STATIC1));
-	CDialogEx::OnTimer(nIDEvent);
 }
+
+

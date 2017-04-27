@@ -24,5 +24,4 @@ protected:
 public:
 	afx_msg void StartCollecting();
 	afx_msg void EndAcquisition();
-	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };
