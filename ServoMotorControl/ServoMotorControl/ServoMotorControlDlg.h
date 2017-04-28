@@ -5,7 +5,7 @@
 #include "PointMoveButton.h"
 #include "KeyBoard.h"
 #include "ClickEdit.h"
-#include<map>
+#include <map>
 #include "afxext.h"
 #include "CameraInterface.h"
 
@@ -31,6 +31,7 @@ private:
 	HANDLE m_ONhandle;
 	HANDLE m_mutex;
 	POINT Old;
+	bool  end_thread;
 	map<UINT, PointMoveButton*> m_button;
 	map<UINT, ClickEdit*>  m_edit;
 	CBitmapButton m_m2044;

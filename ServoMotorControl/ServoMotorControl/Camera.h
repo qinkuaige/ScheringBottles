@@ -30,7 +30,7 @@ public:
 	~Camera();
 
 	int init(); //相机初始化
-	int captureImages(int number); 
+	int captureImages(int number);
 	CImage* get_image();
 	static void Stretchimage(CImage *pImage, CImage *ResultImage, int StretchHeight, int StretchWidth);
 private:
@@ -40,5 +40,6 @@ private:
 	FlyCapture2::Camera m_cam; //相机 
 	FlyCapture2::CameraInfo  m_camInfo; //相机信息
 	list<Image*> m_Image; //相机拍摄的图片
+	HANDLE m_mutex; //线程锁
 };
 

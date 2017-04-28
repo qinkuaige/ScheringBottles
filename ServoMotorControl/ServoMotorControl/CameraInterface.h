@@ -16,12 +16,15 @@ public:
 	enum { IDD = IDD_DIALOG7 };
 private:
 	Camera* m_camera;
-
+	HANDLE m_acquistionHandle; 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
-
+	virtual void DoDataExchange(CDataExchange* pDX);  // DDX/DDV 支持
 	DECLARE_MESSAGE_MAP()
+
+private:
+	void collect();
 public:
+	static DWORD WINAPI imageAcquisitionThread(LPVOID pParam);
 	afx_msg void StartCollecting();
 	afx_msg void EndAcquisition();
 };

@@ -8,7 +8,7 @@
 #endif
 
 CServoMotorControlDlg::CServoMotorControlDlg(CWnd* pParent)
-: CDialogEx(CServoMotorControlDlg::IDD, pParent), m_motorState(false), m_camera(NULL)
+: CDialogEx(CServoMotorControlDlg::IDD, pParent), m_motorState(false), m_camera(NULL), end_thread(false)
 {
 	m_button.clear();
 	m_edit.clear();
@@ -281,7 +281,7 @@ void CServoMotorControlDlg::ReadAndShowD()
 	LONG value = 0; //读16位数据
 	LONG data[2] = { 0 }; //32位数据
 
-	while (m_motorState)
+	while (m_motorState&&(!end_thread))
 	{
 		m_motor.ReadDeviceBlock(_T("D0"), 2, data);
 		value = (data[1] << 16) + (UINT)data[0];
@@ -585,7 +585,7 @@ void CServoMotorControlDlg::M185()
 
 void CServoMotorControlDlg::OnSize(UINT nType, int cx, int cy)
 {
-	if (nType == SIZE_RESTORED || nType == SIZE_MAXIMIZED)//窗体大小发生变动。处理程序
+	if (nType == SIZE_RESTORED || nType == SIZE_MAXIMIZED)
 	{
 		float fsp[2];
 		POINT Newp; //获取现在对话框的大小
@@ -597,9 +597,9 @@ void CServoMotorControlDlg::OnSize(UINT nType, int cx, int cy)
 		fsp[1] = (float)Newp.y / Old.y;
 		CRect Rect;
 		int woc;
-		CPoint OldTLPoint, TLPoint; //左上角
-		CPoint OldBRPoint, BRPoint; //右下角
-		HWND hwndChild = ::GetWindow(m_hWnd, GW_CHILD); //列出所有控件   
+		CPoint OldTLPoint, TLPoint; 
+		CPoint OldBRPoint, BRPoint; 
+		HWND hwndChild = ::GetWindow(m_hWnd, GW_CHILD); 
 		while (hwndChild)
 		{
 			woc = ::GetDlgCtrlID(hwndChild);//取得ID
@@ -610,7 +610,7 @@ void CServoMotorControlDlg::OnSize(UINT nType, int cx, int cy)
 			TLPoint.y = long(OldTLPoint.y*fsp[1]);
 			OldBRPoint = Rect.BottomRight();
 			BRPoint.x = long(OldBRPoint.x *fsp[0]);
-			BRPoint.y = long(OldBRPoint.y *fsp[1]); //高度不可读的控件（如:combBox),不要改变此值.
+			BRPoint.y = long(OldBRPoint.y *fsp[1]); 
 			Rect.SetRect(TLPoint, BRPoint);
 			GetDlgItem(woc)->MoveWindow(Rect, TRUE);
 			hwndChild = ::GetWindow(hwndChild, GW_HWNDNEXT);
@@ -649,34 +649,34 @@ void CServoMotorControlDlg::turn_on()
 		if (!PositionOrigin(_T("D0")))
 		{
 			is_zero = false;
-			break;
+			continue;
 		}
 		if (!PositionOrigin(_T("D20")))
 		{
 			is_zero = false;
-			break;
+			continue;
 		}
 		if (!PositionOrigin(_T("D40")))
 		{
 			is_zero = false;
-			break;
+			continue;
 		}
 		if (!PositionOrigin(_T("D60")))
 		{
 			is_zero = false;
-			break;
+			continue;
 		}
 
 		if (!PositionOrigin(_T("D80")))
 		{
 			is_zero = false;
-			break;
+			continue;
 		}
 
 		if (!PositionOrigin(_T("D100")))
 		{
 			is_zero = false;
-			break;
+			continue;
 		}
 	}
 	m_motor.SetDevice(_T("M181"), 1);
@@ -724,4 +724,7 @@ void CServoMotorControlDlg::camera()
 	}
 	
 	m_camera->ShowWindow(SW_MAXIMIZE);
+	end_thread = true;
+	CloseHandle(handle);
+	this->ShowWindow(SW_HIDE);
 }
