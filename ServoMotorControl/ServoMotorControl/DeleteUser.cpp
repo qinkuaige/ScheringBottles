@@ -54,7 +54,7 @@ BOOL DeleteUser::OnInitDialog()
 	auto endItor = UserInformation::getInstance()->get_allUser()->end();
 
 	const int level = UserInformation::getInstance()->get_level(UserInformation::getInstance()->get_user()->permissions);
-	for (auto pItor = UserInformation::getInstance()->get_allUser()->begin(); pItor != endItor; pItor++)
+	for (map<CString,User*>::const_iterator pItor = UserInformation::getInstance()->get_allUser()->begin(); pItor != endItor; pItor++)
 	{
 		if (UserInformation::getInstance()->get_level(pItor->second->permissions) < level)
 		{
@@ -66,7 +66,7 @@ BOOL DeleteUser::OnInitDialog()
 
 void DeleteUser::ok()
 {
-	auto sel = m_deleteUserBox.GetCurSel();
+	const auto sel = m_deleteUserBox.GetCurSel();
 	CString   name = _T("");
 	m_deleteUserBox.GetLBText(sel, name);
 	auto ret = UserInformation::getInstance()->deleteUser(name);
@@ -80,10 +80,10 @@ void DeleteUser::ok()
 		AfxMessageBox(_T("你的权限不够!"));
 		break;
 	case 3:
-		AfxMessageBox(_T("超做失败!"));
+		AfxMessageBox(_T("操作失败!"));
 		break;
 	default:
+		m_deleteUserBox.DeleteString(sel);
 		break;
 	}
-	
 }

@@ -26,15 +26,15 @@ void AddUser::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_COMBO1, m_permisBox);
+	
 }
+
 
 
 BEGIN_MESSAGE_MAP(AddUser, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON1, &AddUser::OK)
 END_MESSAGE_MAP()
 
-
-// AddUser 消息处理程序
 
 
 BOOL AddUser::OnInitDialog()
@@ -58,6 +58,8 @@ BOOL AddUser::OnInitDialog()
 	int cx = GetSystemMetrics(SM_CXSCREEN);//屏幕像素宽度  
 	int cy = GetSystemMetrics(SM_CYSCREEN);//屏幕像素高度  
 	SetWindowPos(NULL, 0, 0, cx, cy, 0);
+	((CEdit*)GetDlgItem(IDC_EDIT3))->SetLimitText(20);
+	((CEdit*)GetDlgItem(IDC_EDIT20))->SetLimitText(20);
 	size_t size = sizeof Permissions / sizeof Permissions[0];
 	//初始化权限列表
 	for (size_t i = 0; i < size; i++)
@@ -77,7 +79,7 @@ void AddUser::OK()
 	GetDlgItemText(IDC_EDIT2, user->password);
 	GetDlgItemText(IDC_EDIT3, confirmPassword);
 
-	auto sel = m_permisBox.GetCurSel();
+	const auto sel = m_permisBox.GetCurSel();
 	m_permisBox.GetLBText(sel, user->permissions);
 
 	if (user->password != confirmPassword)

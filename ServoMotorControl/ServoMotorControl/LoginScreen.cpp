@@ -57,6 +57,7 @@ BOOL LoginScreen::OnInitDialog()
 	CRect rc;
 	SystemParametersInfo(SPI_GETWORKAREA, 0, &rc, 0);
 	MoveWindow(&rc);
+	((CEdit*)GetDlgItem(IDC_EDIT2))->SetLimitText(20);
 	const auto allUser = UserInformation::getInstance()->get_allUser();
 	for (map<CString,User*>::const_iterator pItor = allUser->begin(); pItor != allUser->end(); pItor++)
 	{

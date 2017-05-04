@@ -52,6 +52,9 @@ BOOL ChangePassword::OnInitDialog()
 	int cx = GetSystemMetrics(SM_CXSCREEN);//ÆÁÄ»ÏñËØ¿í¶È  
 	int cy = GetSystemMetrics(SM_CYSCREEN);//ÆÁÄ»ÏñËØ¸ß¶È  
 	SetWindowPos(NULL, 5,5, cx, cy, 0);
+	((CEdit*)GetDlgItem(IDC_EDIT1))->SetLimitText(20);
+	((CEdit*)GetDlgItem(IDC_EDIT2))->SetLimitText(20);
+	((CEdit*)GetDlgItem(IDC_EDIT3))->SetLimitText(20);
 	return TRUE;  
 }
 
