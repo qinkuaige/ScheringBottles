@@ -725,6 +725,9 @@ void CServoMotorControlDlg::camera()
 	
 	m_camera->ShowWindow(SW_MAXIMIZE);
 	end_thread = true;
+	CRect rcWorkArea;
+	SystemParametersInfo(SPI_GETWORKAREA, 0, &rcWorkArea, 0);
+	m_camera->MoveWindow(&rcWorkArea);
 	CloseHandle(handle);
 	this->ShowWindow(SW_HIDE);
 }

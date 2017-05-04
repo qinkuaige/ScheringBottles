@@ -48,23 +48,20 @@ END_MESSAGE_MAP()
 BOOL LoginScreen::OnInitDialog()
 {
 	m_passwordEdit.SubclassDlgItem(IDC_EDIT2, this);
-	//样式为无边框样式
 	CDialogEx::OnInitDialog();
-	//获取窗口大下
+
 	CRect rect;
 	GetClientRect(&rect); //取客户区大小   
 	m_windowSize.x = rect.right - rect.left;
 	m_windowSize.y = rect.bottom - rect.top;
-	//窗口大小为满屏
-	int cx = GetSystemMetrics(SM_CXSCREEN);//屏幕像素宽度  
-	int cy = GetSystemMetrics(SM_CYSCREEN);//屏幕像素高度  
-	SetWindowPos(NULL, 0, 0, cx, cy, 0);
-	auto allUser = UserInformation::getInstance()->get_allUser();
-	for (auto pItor = allUser->begin(); pItor != allUser->end(); pItor++)
+	CRect rc;
+	SystemParametersInfo(SPI_GETWORKAREA, 0, &rc, 0);
+	MoveWindow(&rc);
+	const auto allUser = UserInformation::getInstance()->get_allUser();
+	for (map<CString,User*>::const_iterator pItor = allUser->begin(); pItor != allUser->end(); pItor++)
 	{
 		m_userNameBox.AddString(pItor->first);
 	}
-
 	m_userNameBox.SetCurSel(0);
 	return TRUE;
 }
@@ -97,6 +94,9 @@ void LoginScreen::ManageUsers()
 	m_childWindows = new ::ManageUsers;
 	m_childWindows->Create(IDD_DIALOG3);
 	m_childWindows->ShowWindow(SW_MAXIMIZE);
+	CRect rcWorkArea;
+	SystemParametersInfo(SPI_GETWORKAREA, 0, &rcWorkArea, 0);
+	m_childWindows->MoveWindow(&rcWorkArea);
 	this->ShowWindow(SW_HIDE);
 }
 
@@ -126,6 +126,9 @@ void LoginScreen::Login()
 	m_childWindows = new CServoMotorControlDlg;
 	m_childWindows->Create(IDD_SERVOMOTORCONTROL_DIALOG);
 	m_childWindows->ShowWindow(SW_MAXIMIZE);
+	CRect rcWorkArea;
+	SystemParametersInfo(SPI_GETWORKAREA, 0, &rcWorkArea, 0);
+	m_childWindows->MoveWindow(&rcWorkArea);
 	this->ShowWindow(SW_HIDE);
 }
 
