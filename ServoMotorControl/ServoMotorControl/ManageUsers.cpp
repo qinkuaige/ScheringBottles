@@ -46,6 +46,7 @@ BEGIN_MESSAGE_MAP(ManageUsers, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON1, &ManageUsers::add_user)
 	ON_BN_CLICKED(IDC_BUTTON2, &ManageUsers::delete_user)
 	ON_BN_CLICKED(IDC_BUTTON3, &ManageUsers::change_password)
+	ON_BN_CLICKED(IDC_BUTTON4, &ManageUsers::OpenKeyboard)
 END_MESSAGE_MAP()
 
 
@@ -171,4 +172,10 @@ void ManageUsers::OnCancel()
 {
 	exit(1);
 	CDialogEx::OnCancel();
+}
+
+
+void ManageUsers::OpenKeyboard()
+{
+	WinExec("osk.exe", SW_NORMAL);
 }

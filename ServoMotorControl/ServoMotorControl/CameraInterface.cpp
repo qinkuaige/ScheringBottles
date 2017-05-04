@@ -56,31 +56,40 @@ void CameraInterface::StartCollecting()
 {
 	m_acquistionHandle = ::CreateThread(NULL, 0, CameraInterface::imageAcquisitionThread, this, 0, NULL);
 
-	CImage* imge = m_camera->get_image();
-	//CImage* imge = new CImage;
-	//imge->Load(_T("E:\\资料\\文档\\证件照\\blue.jpg"));
-	CRect rect;
-	CImage * img = new CImage;
-	GetDlgItem(IDC_STATIC1)->GetClientRect(&rect);
-	Camera::Stretchimage(imge, img,rect.Height(), rect.Width());
-	int cx = img->GetWidth();
-	int cy = img->GetHeight();
-	ScreenToClient(&rect);// 将客户区选中到Picture控件表示的矩形区域内
-	GetDlgItem(IDC_STATIC1)->MoveWindow(rect.left, rect.top, cx, cy, TRUE);// 将窗口移动到Picture
-	GetDlgItem(IDC_STATIC1)->GetClientRect(&rect);// 获得pictrue控件所在的矩形区域
-	CDC *pDC = GetDlgItem(IDC_STATIC1)->GetDC();// 获得pictrue控件的DC
-	img->Draw(pDC->m_hDC, rect);// 将图片画到Picture控件表示的矩形区域
-	ReleaseDC(pDC);// 释放picture控件的DC
-	delete img;
-	delete imge;
-	img = NULL ;
-	return;
+	
 }
 
 
 void CameraInterface::EndAcquisition()
 {
+	if (m_camera == NULL)
+	{
+		return;
+	}
+	CImage* image = m_camera->get_image();
+	if (image == NULL)
+	{
+		return;
+	}
+
 	
+	
+
+	RECT rect;
+	int cx = image->GetWidth();
+	int cy = image->GetHeight();
+	CWnd *pWnd = GetDlgItem(IDC_STATIC1);
+	pWnd->GetClientRect(&rect);
+	CDC *pDC = pWnd->GetDC();// 获得pictrue控件的DC
+	pDC->FillSolidRect(rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, RGB(240, 240, 240));
+
+	image->Draw(pDC->m_hDC, rect);
+	ReleaseDC(pDC);// 释放picture控件的DC
+	if (image != NULL)
+	{
+		delete image;
+		image = NULL;
+	}
 }
 
 

@@ -30,4 +30,5 @@ public:
 	afx_msg void change_password();
 	virtual void OnOK();
 	virtual void OnCancel();
+	afx_msg void OpenKeyboard();
 };

@@ -50,15 +50,6 @@ BOOL LoginScreen::OnInitDialog()
 	m_passwordEdit.SubclassDlgItem(IDC_EDIT2, this);
 	//样式为无边框样式
 	CDialogEx::OnInitDialog();
-	DWORD dwStyle = GetStyle();//获取旧样式    
-	DWORD dwNewStyle = WS_OVERLAPPED | WS_VISIBLE | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_CLIPCHILDREN | WS_CLIPSIBLINGS;
-	dwNewStyle &= dwStyle;//按位与将旧样式去掉    
-	SetWindowLong(m_hWnd, GWL_STYLE, dwNewStyle);//设置成新的样式    
-	DWORD dwExStyle = GetExStyle();//获取旧扩展样式    
-	DWORD dwNewExStyle = WS_EX_LEFT | WS_EX_LTRREADING | WS_EX_RIGHTSCROLLBAR;
-	dwNewExStyle &= dwExStyle;//按位与将旧扩展样式去掉    
-	SetWindowLong(m_hWnd, GWL_EXSTYLE, dwNewExStyle);//设置新的扩展样式    
-	SetWindowPos(NULL, 0, 0, 0, 0, SWP_NOZORDER | SWP_NOMOVE | SWP_NOSIZE | SWP_FRAMECHANGED);//告诉windows：我的样式改变了，窗口位置和大小保持原来不变！
 	//获取窗口大下
 	CRect rect;
 	GetClientRect(&rect); //取客户区大小   
@@ -199,5 +190,6 @@ BOOL LoginScreen::OnWndMsg(UINT message, WPARAM wParam, LPARAM lParam, LRESULT* 
 
 void LoginScreen::OnOK()
 {
-	this->Login();
+	//this->Login();
+	CDialogEx::OnOK();
 }
