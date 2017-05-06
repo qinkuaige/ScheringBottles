@@ -16,8 +16,8 @@ public:
 	enum { IDD = IDD_DIALOG7 };
 private:
 	Camera* m_camera;
+	POINT m_oldSize;
 	HANDLE m_acquistionHandle; 
-protected:
 	virtual void DoDataExchange(CDataExchange* pDX);  // DDX/DDV Ö§³Ö
 	DECLARE_MESSAGE_MAP()
 
@@ -27,4 +27,7 @@ public:
 	static DWORD WINAPI imageAcquisitionThread(LPVOID pParam);
 	afx_msg void StartCollecting();
 	afx_msg void EndAcquisition();
+	afx_msg void return_button();
+	afx_msg void OnSize(UINT nType, int cx, int cy);
+	virtual BOOL OnInitDialog();
 };

@@ -1,14 +1,14 @@
 #include "stdafx.h"
 #include "ServoMotorControl.h"
-#include "ServoMotorControlDlg.h"
+#include "ServoMotorControldlg.h"
 #include "afxdialogex.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
-CServoMotorControlDlg::CServoMotorControlDlg(CWnd* pParent)
-: CDialogEx(CServoMotorControlDlg::IDD, pParent), m_motorState(false), m_camera(NULL), end_thread(false)
+CServoMotorContrm_oldSizelg::CServoMotorContrm_oldSizelg(CWnd* pParent)
+: CDialogEx(CServoMotorContrm_oldSizelg::IDD, pParent), m_motorState(false), m_camera(NULL), end_thread(false)
 {
 	m_button.clear();
 	m_edit.clear();
@@ -22,7 +22,7 @@ CServoMotorControlDlg::CServoMotorControlDlg(CWnd* pParent)
 	}
 }
 
-CServoMotorControlDlg::~CServoMotorControlDlg()
+CServoMotorContrm_oldSizelg::~CServoMotorContrm_oldSizelg()
 {
 	for (auto pItor = m_button.begin(); pItor != m_button.end();pItor++)
 	{
@@ -37,7 +37,7 @@ CServoMotorControlDlg::~CServoMotorControlDlg()
 	m_edit.clear();
 }
 
-void CServoMotorControlDlg::DoDataExchange(CDataExchange* pDX)
+void CServoMotorContrm_oldSizelg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_ACTUTLTYPE1, m_motor);
@@ -68,7 +68,7 @@ void CServoMotorControlDlg::DoDataExchange(CDataExchange* pDX)
 	add_Control(IDC_BUTTON32, _T("M103"), pDX);
 }
 
-void CServoMotorControlDlg::add_Control(const UINT &id, LPCTSTR device, CDataExchange* pDX)
+void CServoMotorContrm_oldSizelg::add_Control(const UINT &id, LPCTSTR device, CDataExchange* pDX)
 {
 	int button_id = id + smore_button_id;
 	auto pItor = m_button.find(button_id);
@@ -78,38 +78,38 @@ void CServoMotorControlDlg::add_Control(const UINT &id, LPCTSTR device, CDataExc
 	return;
 }
 
-BEGIN_MESSAGE_MAP(CServoMotorControlDlg, CDialogEx)
+BEGIN_MESSAGE_MAP(CServoMotorContrm_oldSizelg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	
-	ON_BN_CLICKED(IDC_BUTTON21, &CServoMotorControlDlg::Start)
-	ON_BN_CLICKED(IDC_BUTTON22, &CServoMotorControlDlg::Stop)
-	ON_BN_CLICKED(IDC_BUTTON23, &CServoMotorControlDlg::M30)
-	ON_BN_CLICKED(IDC_BUTTON24, &CServoMotorControlDlg::M31)
-	ON_BN_CLICKED(IDC_BUTTON25, &CServoMotorControlDlg::M32)
-	ON_BN_CLICKED(IDC_BUTTON26, &CServoMotorControlDlg::M33)
-	ON_BN_CLICKED(IDC_BUTTON27, &CServoMotorControlDlg::M34)
-	ON_BN_CLICKED(IDC_BUTTON28, &CServoMotorControlDlg::M35)
-	ON_BN_CLICKED(IDC_BUTTON33, &CServoMotorControlDlg::M104)
-	ON_BN_CLICKED(IDC_BUTTON34, &CServoMotorControlDlg::M105)
-	ON_BN_CLICKED(IDC_BUTTON35, &CServoMotorControlDlg::M106)
-	ON_BN_CLICKED(IDC_BUTTON36, &CServoMotorControlDlg::M107)
-	ON_BN_CLICKED(IDC_BUTTON37, &CServoMotorControlDlg::M0)
-	ON_BN_CLICKED(IDC_BUTTON38, &CServoMotorControlDlg::M180)
-	ON_BN_CLICKED(IDC_BUTTON39, &CServoMotorControlDlg::M181)
-	ON_BN_CLICKED(IDC_BUTTON40, &CServoMotorControlDlg::M184)
-	ON_BN_CLICKED(IDC_BUTTON41, &CServoMotorControlDlg::M183)
-	ON_BN_CLICKED(IDC_BUTTON42, &CServoMotorControlDlg::M185)
-	ON_BN_CLICKED(IDC_BUTTON55, &CServoMotorControlDlg::M182)
+	ON_BN_CLICKED(IDC_BUTTON21, &CServoMotorContrm_oldSizelg::Start)
+	ON_BN_CLICKED(IDC_BUTTON22, &CServoMotorContrm_oldSizelg::Stop)
+	ON_BN_CLICKED(IDC_BUTTON23, &CServoMotorContrm_oldSizelg::M30)
+	ON_BN_CLICKED(IDC_BUTTON24, &CServoMotorContrm_oldSizelg::M31)
+	ON_BN_CLICKED(IDC_BUTTON25, &CServoMotorContrm_oldSizelg::M32)
+	ON_BN_CLICKED(IDC_BUTTON26, &CServoMotorContrm_oldSizelg::M33)
+	ON_BN_CLICKED(IDC_BUTTON27, &CServoMotorContrm_oldSizelg::M34)
+	ON_BN_CLICKED(IDC_BUTTON28, &CServoMotorContrm_oldSizelg::M35)
+	ON_BN_CLICKED(IDC_BUTTON33, &CServoMotorContrm_oldSizelg::M104)
+	ON_BN_CLICKED(IDC_BUTTON34, &CServoMotorContrm_oldSizelg::M105)
+	ON_BN_CLICKED(IDC_BUTTON35, &CServoMotorContrm_oldSizelg::M106)
+	ON_BN_CLICKED(IDC_BUTTON36, &CServoMotorContrm_oldSizelg::M107)
+	ON_BN_CLICKED(IDC_BUTTON37, &CServoMotorContrm_oldSizelg::M0)
+	ON_BN_CLICKED(IDC_BUTTON38, &CServoMotorContrm_oldSizelg::M180)
+	ON_BN_CLICKED(IDC_BUTTON39, &CServoMotorContrm_oldSizelg::M181)
+	ON_BN_CLICKED(IDC_BUTTON40, &CServoMotorContrm_oldSizelg::M184)
+	ON_BN_CLICKED(IDC_BUTTON41, &CServoMotorContrm_oldSizelg::M183)
+	ON_BN_CLICKED(IDC_BUTTON42, &CServoMotorContrm_oldSizelg::M185)
+	ON_BN_CLICKED(IDC_BUTTON55, &CServoMotorContrm_oldSizelg::M182)
 	ON_WM_SIZE()
 	ON_WM_CLOSE()
-	ON_BN_CLICKED(IDC_BUTTON44, &CServoMotorControlDlg::turnON)
-	ON_BN_CLICKED(IDC_BUTTON45, &CServoMotorControlDlg::turnOFF)
-	ON_BN_CLICKED(IDC_BUTTON46, &CServoMotorControlDlg::camera)
+	ON_BN_CLICKED(IDC_BUTTON44, &CServoMotorContrm_oldSizelg::turnON)
+	ON_BN_CLICKED(IDC_BUTTON45, &CServoMotorContrm_oldSizelg::turnOFF)
+	ON_BN_CLICKED(IDC_BUTTON46, &CServoMotorContrm_oldSizelg::camera)
 END_MESSAGE_MAP()
 
-BOOL CServoMotorControlDlg::OnInitDialog()
+BOOL CServoMotorContrm_oldSizelg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 	// IDM_ABOUTBOX 必须在系统命令范围内。
@@ -129,11 +129,10 @@ BOOL CServoMotorControlDlg::OnInitDialog()
 			pSysMenu->AppendMenu(MF_STRING, IDM_ABOUTBOX, strAboutMenu);
 		}
 	}
-	int   cx = 0, cy = 0;
 	CRect rect;
 	GetClientRect(&rect); //取客户区大小   
-	Old.x = rect.right - rect.left;
-	Old.y = rect.bottom - rect.top;
+	m_oldSize.x = rect.right - rect.left;
+	m_oldSize.y = rect.bottom - rect.top;
 	m_board.Create(IDD_DIALOG1);
 	add_edit(IDC_EDIT28,_T("D2400"));
 	add_edit(IDC_EDIT32, _T("D2402"));
@@ -146,7 +145,7 @@ BOOL CServoMotorControlDlg::OnInitDialog()
 	return TRUE;  
 }
 
-void CServoMotorControlDlg::add_edit(const UINT &id, const LPCTSTR device)
+void CServoMotorContrm_oldSizelg::add_edit(const UINT &id, const LPCTSTR device)
 {
 	int Id = id + smore_button_id;
 	ClickEdit* edit = new ClickEdit(Id, device);
@@ -158,7 +157,7 @@ void CServoMotorControlDlg::add_edit(const UINT &id, const LPCTSTR device)
 	m_edit[Id] = edit;
 }
 
-void CServoMotorControlDlg::OnSysCommand(UINT nID, LPARAM lParam)
+void CServoMotorContrm_oldSizelg::OnSysCommand(UINT nID, LPARAM lParam)
 {
 	if ((nID & 0xFFF0) == IDM_ABOUTBOX)
 	{
@@ -170,7 +169,7 @@ void CServoMotorControlDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 }
 
-void CServoMotorControlDlg::OnPaint()
+void CServoMotorContrm_oldSizelg::OnPaint()
 {
 	if (IsIconic())
 	{
@@ -197,28 +196,28 @@ void CServoMotorControlDlg::OnPaint()
 
 //当用户拖动最小化窗口时系统调用此函数取得光标
 //显示。
-HCURSOR CServoMotorControlDlg::OnQueryDragIcon()
+HCURSOR CServoMotorContrm_oldSizelg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
 //读数据线程
-DWORD WINAPI CServoMotorControlDlg::ThreadProc(LPVOID pParam)
+DWORD WINAPI CServoMotorContrm_oldSizelg::ThreadProc(LPVOID pParam)
 {
-	CServoMotorControlDlg* ServoMotor = (CServoMotorControlDlg*)pParam;
+	CServoMotorContrm_oldSizelg* ServoMotor = (CServoMotorContrm_oldSizelg*)pParam;
 	ServoMotor->ReadAndShowD();
 	return 1;
 }
 
 //开机线程
-DWORD WINAPI CServoMotorControlDlg::turnOn_thread(LPVOID pParam)
+DWORD WINAPI CServoMotorContrm_oldSizelg::turnOn_thread(LPVOID pParam)
 {
-	CServoMotorControlDlg* ServoMotor = (CServoMotorControlDlg*)pParam;
+	CServoMotorContrm_oldSizelg* ServoMotor = (CServoMotorContrm_oldSizelg*)pParam;
 	ServoMotor->turn_on();	
 	return 1;
 }
 //自定义消息处理
-BOOL CServoMotorControlDlg::OnWndMsg(UINT message, WPARAM wParam, LPARAM lParam, LRESULT* pResult)
+BOOL CServoMotorContrm_oldSizelg::OnWndMsg(UINT message, WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 {
 	if (message <= smore_button_id || (message > IDC_EDIT41 + smore_button_id))
 	{
@@ -261,7 +260,7 @@ BOOL CServoMotorControlDlg::OnWndMsg(UINT message, WPARAM wParam, LPARAM lParam,
 
 
 //产生一个上升沿
-void CServoMotorControlDlg::risingEdge(const CString str)
+void CServoMotorContrm_oldSizelg::risingEdge(const CString str)
 {
 	if (m_motorState == false)
 	{
@@ -276,7 +275,7 @@ void CServoMotorControlDlg::risingEdge(const CString str)
 }
 
 //读取D里面的数据显示到文本框
-void CServoMotorControlDlg::ReadAndShowD()
+void CServoMotorContrm_oldSizelg::ReadAndShowD()
 {
 	LONG value = 0; //读16位数据
 	LONG data[2] = { 0 }; //32位数据
@@ -438,7 +437,7 @@ void CServoMotorControlDlg::ReadAndShowD()
 }
 
 // 启动
-void CServoMotorControlDlg::Start()
+void CServoMotorContrm_oldSizelg::Start()
 {
 	if (m_motorState == true)
 	{
@@ -451,11 +450,11 @@ void CServoMotorControlDlg::Start()
 		return;
 	}
 	m_motorState = true;
-	handle = ::CreateThread(NULL, 0, CServoMotorControlDlg::ThreadProc, this, 0, NULL);
+	handle = ::CreateThread(NULL, 0, CServoMotorContrm_oldSizelg::ThreadProc, this, 0, NULL);
 }
 
 // 停止
-void CServoMotorControlDlg::Stop()
+void CServoMotorContrm_oldSizelg::Stop()
 {
 	if (m_motorState == false)
 	{
@@ -473,37 +472,37 @@ void CServoMotorControlDlg::Stop()
 }
 
 
-void CServoMotorControlDlg::M30()
+void CServoMotorContrm_oldSizelg::M30()
 {
 	risingEdge(_T("M30"));
 }
 
 
-void CServoMotorControlDlg::M31()
+void CServoMotorContrm_oldSizelg::M31()
 {
 	risingEdge(_T("M31"));
 }
 
 
-void CServoMotorControlDlg::M32()
+void CServoMotorContrm_oldSizelg::M32()
 {
 	risingEdge(_T("M32"));
 }
 
 
-void CServoMotorControlDlg::M33()
+void CServoMotorContrm_oldSizelg::M33()
 {
 	risingEdge(_T("M33"));
 }
 
 
-void CServoMotorControlDlg::M34()
+void CServoMotorContrm_oldSizelg::M34()
 {
 	risingEdge(_T("M34"));
 }
 
 
-void CServoMotorControlDlg::M35()
+void CServoMotorContrm_oldSizelg::M35()
 {
 	risingEdge(_T("M35"));
 }
@@ -511,38 +510,38 @@ void CServoMotorControlDlg::M35()
 
 
 
-void CServoMotorControlDlg::M104()
+void CServoMotorContrm_oldSizelg::M104()
 {
 	risingEdge(_T("M104"));
 }
 
 
-void CServoMotorControlDlg::M105()
+void CServoMotorContrm_oldSizelg::M105()
 {
 	risingEdge(_T("M105"));
 	
 }
 
 
-void CServoMotorControlDlg::M106()
+void CServoMotorContrm_oldSizelg::M106()
 {
 	risingEdge(_T("M106"));
 }
 
 
-void CServoMotorControlDlg::M107()
+void CServoMotorContrm_oldSizelg::M107()
 {
 	risingEdge(_T("M107"));
 }
 
 
-void CServoMotorControlDlg::M0()
+void CServoMotorContrm_oldSizelg::M0()
 {
 	risingEdge(_T("M0"));
 }
 
 
-void CServoMotorControlDlg::M180()
+void CServoMotorContrm_oldSizelg::M180()
 {
 	risingEdge(_T("M180"));
 }
@@ -550,7 +549,7 @@ void CServoMotorControlDlg::M180()
 
 
 
-void CServoMotorControlDlg::M181()
+void CServoMotorContrm_oldSizelg::M181()
 {
 	LONG data = 0;
 	if (m_motorState == false)
@@ -562,28 +561,28 @@ void CServoMotorControlDlg::M181()
 	m_motor.SetDevice(_T("M181"), data);
 }
 
-void CServoMotorControlDlg::M182()
+void CServoMotorContrm_oldSizelg::M182()
 {
 	risingEdge(_T("M182"));
 }
 
-void CServoMotorControlDlg::M183()
+void CServoMotorContrm_oldSizelg::M183()
 {
 	risingEdge(_T("M183"));
 }
 
-void CServoMotorControlDlg::M184()
+void CServoMotorContrm_oldSizelg::M184()
 {
 	risingEdge(_T("M184"));
 }
 
-void CServoMotorControlDlg::M185()
+void CServoMotorContrm_oldSizelg::M185()
 {
 	risingEdge(_T("M185"));
 }
 
 
-void CServoMotorControlDlg::OnSize(UINT nType, int cx, int cy)
+void CServoMotorContrm_oldSizelg::OnSize(UINT nType, int cx, int cy)
 {
 	if (nType == SIZE_RESTORED || nType == SIZE_MAXIMIZED)
 	{
@@ -593,53 +592,53 @@ void CServoMotorControlDlg::OnSize(UINT nType, int cx, int cy)
 		GetClientRect(&recta); //取客户区大小   
 		Newp.x = recta.right - recta.left;
 		Newp.y = recta.bottom - recta.top;
-		fsp[0] = (float)Newp.x / Old.x;
-		fsp[1] = (float)Newp.y / Old.y;
+		fsp[0] = (float)Newp.x / m_oldSize.x;
+		fsp[1] = (float)Newp.y / m_oldSize.y;
 		CRect Rect;
 		int woc;
-		CPoint OldTLPoint, TLPoint; 
-		CPoint OldBRPoint, BRPoint; 
+		CPoint m_oldSizeTLPoint, TLPoint; 
+		CPoint m_oldSizeBRPoint, BRPoint; 
 		HWND hwndChild = ::GetWindow(m_hWnd, GW_CHILD); 
 		while (hwndChild)
 		{
 			woc = ::GetDlgCtrlID(hwndChild);//取得ID
 			GetDlgItem(woc)->GetWindowRect(Rect);
 			ScreenToClient(Rect);
-			OldTLPoint = Rect.TopLeft();
-			TLPoint.x = long(OldTLPoint.x*fsp[0]);
-			TLPoint.y = long(OldTLPoint.y*fsp[1]);
-			OldBRPoint = Rect.BottomRight();
-			BRPoint.x = long(OldBRPoint.x *fsp[0]);
-			BRPoint.y = long(OldBRPoint.y *fsp[1]); 
+			m_oldSizeTLPoint = Rect.TopLeft();
+			TLPoint.x = long(m_oldSizeTLPoint.x*fsp[0]);
+			TLPoint.y = long(m_oldSizeTLPoint.y*fsp[1]);
+			m_oldSizeBRPoint = Rect.BottomRight();
+			BRPoint.x = long(m_oldSizeBRPoint.x *fsp[0]);
+			BRPoint.y = long(m_oldSizeBRPoint.y *fsp[1]); 
 			Rect.SetRect(TLPoint, BRPoint);
 			GetDlgItem(woc)->MoveWindow(Rect, TRUE);
 			hwndChild = ::GetWindow(hwndChild, GW_HWNDNEXT);
 		}
 
-		Old = Newp;
+		m_oldSize = Newp;
 	}
 	CDialogEx::OnSize(nType, cx, cy);
 
 }
 
 
-void CServoMotorControlDlg::OnClose()
+void CServoMotorContrm_oldSizelg::OnClose()
 {
 	CDialogEx::OnClose();
 	exit(0);
 }
 
 
-void CServoMotorControlDlg::turnON()
+void CServoMotorContrm_oldSizelg::turnON()
 {
 	if (!m_motorState)
 	{
 		return;
 	}
-	m_ONhandle = ::CreateThread(NULL, 0, CServoMotorControlDlg::turnOn_thread, this, 0, NULL);
+	m_ONhandle = ::CreateThread(NULL, 0, CServoMotorContrm_oldSizelg::turnOn_thread, this, 0, NULL);
 }
 
-void CServoMotorControlDlg::turn_on()
+void CServoMotorContrm_oldSizelg::turn_on()
 {
 	risingEdge(_T("M180"));
 	bool is_zero = false;
@@ -683,7 +682,7 @@ void CServoMotorControlDlg::turn_on()
 	risingEdge(_T("M183"));
 }
 
-bool CServoMotorControlDlg::PositionOrigin(const CString str)
+bool CServoMotorContrm_oldSizelg::PositionOrigin(const CString str)
 {
 	long data[2];
 	long value;
@@ -696,30 +695,30 @@ bool CServoMotorControlDlg::PositionOrigin(const CString str)
 	return true;
 }
 
-void CServoMotorControlDlg::turnOFF()
+void CServoMotorContrm_oldSizelg::turnOFF()
 {
 	risingEdge(_T("M185"));
 	m_motor.SetDevice(_T("M181"), 0);
 }
 
 
-void CServoMotorControlDlg::OnOK()
+void CServoMotorContrm_oldSizelg::OnOK()
 {
 
 }
 
 
-void CServoMotorControlDlg::OnCancel()
+void CServoMotorContrm_oldSizelg::OnCancel()
 {
 	exit(0);
 }
 
 
-void CServoMotorControlDlg::camera()
+void CServoMotorContrm_oldSizelg::camera()
 {
 	if (m_camera == NULL)
 	{
-		m_camera = new CameraInterface;
+		m_camera = new CameraInterface(this);
 		m_camera->Create(IDD_DIALOG7);
 	}
 	

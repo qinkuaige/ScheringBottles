@@ -18,7 +18,8 @@ UserInformation::~UserInformation()
 {
 	for (auto pItor = m_allUser.begin(); pItor != m_allUser.end(); pItor++)
 	{
-		delete pItor->second;
+		delete  pItor->second;
+		m_allUser.erase(pItor);
 	}
 	m_allUser.clear();
 

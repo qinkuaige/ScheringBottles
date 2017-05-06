@@ -1,12 +1,8 @@
-// ChangePassword.cpp : 实现文件
-//
-
 #include "stdafx.h"
 #include "ServoMotorControl.h"
 #include "ChangePassword.h"
 #include "afxdialogex.h"
 #include "UserInformation.h"
-
 
 // 修改密码 对话框
 
@@ -17,6 +13,7 @@ ChangePassword::ChangePassword(CWnd* pParent)
 {
 
 }
+
 
 ChangePassword::~ChangePassword()
 {
@@ -39,18 +36,17 @@ END_MESSAGE_MAP()
 BOOL ChangePassword::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
-	DWORD dwStyle = GetStyle();//获取旧样式    
+	DWORD dwStyle = GetStyle(); 
 	DWORD dwNewStyle = WS_OVERLAPPED | WS_VISIBLE | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_CLIPCHILDREN | WS_CLIPSIBLINGS;
-	dwNewStyle &= dwStyle;//按位与将旧样式去掉    
-	SetWindowLong(m_hWnd, GWL_STYLE, dwNewStyle);//设置成新的样式    
-	DWORD dwExStyle = GetExStyle();//获取旧扩展样式    
+	dwNewStyle &= dwStyle;
+	SetWindowLong(m_hWnd, GWL_STYLE, dwNewStyle);
+	DWORD dwExStyle = GetExStyle();   
 	DWORD dwNewExStyle = WS_EX_LEFT | WS_EX_LTRREADING | WS_EX_RIGHTSCROLLBAR;
-	dwNewExStyle &= dwExStyle;//按位与将旧扩展样式去掉    
-	SetWindowLong(m_hWnd, GWL_EXSTYLE, dwNewExStyle);//设置新的扩展样式    
-	SetWindowPos(NULL, 0, 0, 0, 0, SWP_NOZORDER | SWP_NOMOVE | SWP_NOSIZE | SWP_FRAMECHANGED);//告诉windows：我的样式改变了，窗口位置和大小保持原来不变！
-	//窗口大小为满屏
-	int cx = GetSystemMetrics(SM_CXSCREEN);//屏幕像素宽度  
-	int cy = GetSystemMetrics(SM_CYSCREEN);//屏幕像素高度  
+	dwNewExStyle &= dwExStyle;  
+	SetWindowLong(m_hWnd, GWL_EXSTYLE, dwNewExStyle);  
+	SetWindowPos(NULL, 0, 0, 0, 0, SWP_NOZORDER | SWP_NOMOVE | SWP_NOSIZE | SWP_FRAMECHANGED);
+	int cx = GetSystemMetrics(SM_CXSCREEN); 
+	int cy = GetSystemMetrics(SM_CYSCREEN);
 	SetWindowPos(NULL, 5,5, cx, cy, 0);
 	((CEdit*)GetDlgItem(IDC_EDIT1))->SetLimitText(20);
 	((CEdit*)GetDlgItem(IDC_EDIT2))->SetLimitText(20);
@@ -62,15 +58,15 @@ BOOL ChangePassword::OnInitDialog()
 void ChangePassword::ok()
 {
 
-	CString  oldPassword = _T("");
+	CString  m_oldSizePassword = _T("");
 	CString  newPassword = _T("");
 	CString  password = _T("");
 	CString confirmPassword = _T("");
-	GetDlgItemText(IDC_EDIT1, oldPassword);
+	GetDlgItemText(IDC_EDIT1, m_oldSizePassword);
 	GetDlgItemText(IDC_EDIT2, newPassword);
 	GetDlgItemText(IDC_EDIT3, confirmPassword);
 
-	if (!UserInformation::getInstance()->verifyPassword(oldPassword))
+	if (!UserInformation::getInstance()->verifyPassword(m_oldSizePassword))
 	{
 		AfxMessageBox(_T("原始密码错误！"));
 		return;

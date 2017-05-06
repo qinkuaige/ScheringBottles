@@ -101,20 +101,20 @@ void ManageUsers::OnSize(UINT nType, int cx, int cy)
 		fsp[1] = (float)WindowSize.y / m_windowSize.y;
 		CRect Rect;
 		int woc;
-		CPoint OldTLPoint, TLPoint; //左上角
-		CPoint OldBRPoint, BRPoint; //右下角
+		CPoint m_oldSizeTLPoint, TLPoint; //左上角
+		CPoint m_oldSizeBRPoint, BRPoint; //右下角
 		HWND hwndChild = ::GetWindow(m_hWnd, GW_CHILD); //列出所有控件   
 		while (hwndChild)
 		{
 			woc = ::GetDlgCtrlID(hwndChild);//取得ID
 			GetDlgItem(woc)->GetWindowRect(Rect);
 			ScreenToClient(Rect);
-			OldTLPoint = Rect.TopLeft();
-			TLPoint.x = long(OldTLPoint.x*fsp[0]);
-			TLPoint.y = long(OldTLPoint.y*fsp[1]);
-			OldBRPoint = Rect.BottomRight();
-			BRPoint.x = long(OldBRPoint.x *fsp[0]);
-			BRPoint.y = long(OldBRPoint.y *fsp[1]);
+			m_oldSizeTLPoint = Rect.TopLeft();
+			TLPoint.x = long(m_oldSizeTLPoint.x*fsp[0]);
+			TLPoint.y = long(m_oldSizeTLPoint.y*fsp[1]);
+			m_oldSizeBRPoint = Rect.BottomRight();
+			BRPoint.x = long(m_oldSizeBRPoint.x *fsp[0]);
+			BRPoint.y = long(m_oldSizeBRPoint.y *fsp[1]);
 			Rect.SetRect(TLPoint, BRPoint);
 			GetDlgItem(woc)->MoveWindow(Rect, TRUE);
 			hwndChild = ::GetWindow(hwndChild, GW_HWNDNEXT);

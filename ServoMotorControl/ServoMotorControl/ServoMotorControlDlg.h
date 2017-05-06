@@ -10,12 +10,12 @@
 #include "CameraInterface.h"
 
 using namespace std;
-class CServoMotorControlDlg : public CDialogEx
+class CServoMotorContrm_oldSizelg : public CDialogEx
 {
 	static const UINT smore_button_id = 10000;
 public:
-	CServoMotorControlDlg(CWnd* pParent = NULL);	// 标准构造函数
-	virtual ~CServoMotorControlDlg();
+	CServoMotorContrm_oldSizelg(CWnd* pParent = NULL);	// 标准构造函数
+	virtual ~CServoMotorContrm_oldSizelg();
 	static DWORD WINAPI ThreadProc(LPVOID pParam);//读线程
 	static DWORD WINAPI turnOn_thread(LPVOID pParam); //启动线程
 protected:
@@ -30,7 +30,7 @@ private:
 	HANDLE handle;
 	HANDLE m_ONhandle;
 	HANDLE m_mutex;
-	POINT Old;
+	POINT m_oldSize;
 	bool  end_thread;
 	map<UINT, PointMoveButton*> m_button;
 	map<UINT, ClickEdit*>  m_edit;

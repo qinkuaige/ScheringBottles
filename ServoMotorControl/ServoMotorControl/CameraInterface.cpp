@@ -30,6 +30,8 @@ BEGIN_MESSAGE_MAP(CameraInterface, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON1, &CameraInterface::StartCollecting)
 	ON_BN_CLICKED(IDC_BUTTON2, &CameraInterface::EndAcquisition)
 	ON_WM_TIMER()
+	ON_BN_CLICKED(IDC_BUTTON3, &CameraInterface::return_button)
+	ON_WM_SIZE()
 END_MESSAGE_MAP()
 
 //图像采集线程
@@ -44,12 +46,10 @@ void CameraInterface::collect()
 {
 	if (m_camera == NULL)
 	{
-		m_camera = new Camera;
+		m_camera = new Camera(1);
 		m_camera->init();
 	}
 	m_camera->captureImages(6);
-	Sleep(5000);
-
 }
 
 void CameraInterface::StartCollecting()
@@ -93,3 +93,64 @@ void CameraInterface::EndAcquisition()
 }
 
 
+
+
+void CameraInterface::return_button()
+{
+	m_pParentWnd->ShowWindow(SW_MAXIMIZE);
+	CRect rcWorkArea;
+	SystemParametersInfo(SPI_GETWORKAREA, 0, &rcWorkArea, 0);
+	m_pParentWnd->MoveWindow(&rcWorkArea);
+	this->ShowWindow(SW_HIDE);
+}
+
+
+void CameraInterface::OnSize(UINT nType, int cx, int cy)
+{
+	if (nType == SIZE_RESTORED || nType == SIZE_MAXIMIZED)
+	{
+		float fsp[2];
+		POINT Newp; //获取现在对话框的大小
+		CRect recta;
+		GetClientRect(&recta); //取客户区大小   
+		Newp.x = recta.right - recta.left;
+		Newp.y = recta.bottom - recta.top;
+		fsp[0] = (float)Newp.x / m_oldSize.x;
+		fsp[1] = (float)Newp.y / m_oldSize.y;
+		CRect Rect;
+		int woc;
+		CPoint m_oldSizeTLPoint, TLPoint;
+		CPoint m_oldSizeBRPoint, BRPoint;
+		HWND hwndChild = ::GetWindow(m_hWnd, GW_CHILD);
+		while (hwndChild)
+		{
+			woc = ::GetDlgCtrlID(hwndChild);//取得ID
+			GetDlgItem(woc)->GetWindowRect(Rect);
+			ScreenToClient(Rect);
+			m_oldSizeTLPoint = Rect.TopLeft();
+			TLPoint.x = long(m_oldSizeTLPoint.x*fsp[0]);
+			TLPoint.y = long(m_oldSizeTLPoint.y*fsp[1]);
+			m_oldSizeBRPoint = Rect.BottomRight();
+			BRPoint.x = long(m_oldSizeBRPoint.x *fsp[0]);
+			BRPoint.y = long(m_oldSizeBRPoint.y *fsp[1]);
+			Rect.SetRect(TLPoint, BRPoint);
+			GetDlgItem(woc)->MoveWindow(Rect, TRUE);
+			hwndChild = ::GetWindow(hwndChild, GW_HWNDNEXT);
+		}
+
+		m_oldSize = Newp;
+	}
+	CDialogEx::OnSize(nType, cx, cy);
+
+}
+
+
+BOOL CameraInterface::OnInitDialog()
+{
+	CDialogEx::OnInitDialog();
+	CRect rect;
+	GetClientRect(&rect); //取客户区大小   
+	m_oldSize.x = rect.right - rect.left;
+	m_oldSize.y = rect.bottom - rect.top;
+	return TRUE;  // return TRUE unless you set the focus to a control
+}
