@@ -33,6 +33,7 @@ void CMotorRDDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CMotorRDDlg, CDialogEx)
 	ON_WM_TIMER()
 	ON_BN_CLICKED(IDC_CH_SPEED, &CMotorRDDlg::OnBnClickedChSpeed)
+	ON_BN_CLICKED(IDC_MB_SPEED, &CMotorRDDlg::OnBnClickedMbSpeed)
 END_MESSAGE_MAP()
 
 
@@ -74,6 +75,12 @@ INT CMotorRDDlg::showDialog(INT dlgID)
 INT CMotorRDDlg::ChSpeed(INT speed)
 {
 	m_pMotor->ComSetSpeed(speed);
+	return TRUE;
+}
+
+INT  CMotorRDDlg::MbSpeed(INT speed)
+{
+	m_pMotor->ComSetmbSpeed(speed);
 	return TRUE;
 }
 
@@ -404,5 +411,18 @@ void CMotorRDDlg::ClickDiYa()
 	{
 		bstrText = ::SysAllocString(_T("水晶_绿"));
 		m_diYa.SetBackName(&bstrText);
+	}
+}
+
+//网带速度设定
+void CMotorRDDlg::OnBnClickedMbSpeed()
+{
+	ParamStruct data;
+	data.m_max = 150;
+	CSetValueDlg setDlg;
+	if (setDlg.showDlg(data) == IDYES)
+	{
+		LONG speed = data;
+		ChSpeed(speed);
 	}
 }

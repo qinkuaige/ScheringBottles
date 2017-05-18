@@ -24,6 +24,7 @@ public:
 	//INT setDengValue(INT ID, LONG value);//
 	//INT showDeng();//指示灯显示
 	INT ChSpeed(INT speed);//改变速度
+	INT MbSpeed(INT speed); //改变网带速速
 	INT ClearData();//清空数据
 
 public:
@@ -49,4 +50,5 @@ public:
 	CDLF_Button m_testMotorBT;
 	void ClickDiYa();
 	CDLF_Button m_diYa;
+	afx_msg void OnBnClickedMbSpeed();
 };

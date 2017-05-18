@@ -32,7 +32,8 @@ public:
 		Dlg_ID = 4100,		//
 		Plc_Data_Num = 5,//连续采集plc数据 个数
 		Max_Motor_Speed = 120,//伺服运行最大速度
-	};
+		Max_MeshBelt_speed = 150 ,//网带运行最大速度
+	}; 
 	
 	enum
 	{
@@ -55,6 +56,7 @@ public:
 	virtual INT ComSetGrabFlag(INT GUID, INT* grabFlag);//设置取图标识位
 	virtual INT ComGetSpeed();//获取设备运行速度
 	virtual INT ComSetSpeed(LONG value);//设置速度
+	virtual INT ComSetmbSpeed(LONG value); // 设置网带速度
 	virtual INT ComGetErr(vector<CString>& str);//获取错误信息
 	virtual INT ComResetErr();//错误复位
 	virtual INT ComClearData();//数据清零

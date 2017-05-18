@@ -247,6 +247,27 @@ INT CMotorSL::ComSetSpeed(LONG speed)
 	return TRUE;
 }
 
+int CMotorSL::ComSetmbSpeed(LONG speed)
+{
+	if (speed > Max_MeshBelt_speed)
+	{
+		speed = Max_MeshBelt_speed;
+	}
+	if (speed < 0)
+	{
+		speed = 0;
+	}
+
+	if (ComSetValue(_T("D690"), speed) == TRUE)
+	{
+		ComSetValue(_T("M647"), TRUE);
+		Sleep(400);
+		ComSetValue(_T("M647"), FALSE);
+		return TRUE;
+	}
+	return FALSE;
+}
+
 //获取错误信息
 INT CMotorSL::ComGetErr(vector<CString>& str)
 {
