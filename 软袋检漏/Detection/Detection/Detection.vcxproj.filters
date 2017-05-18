@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\access">
+      <UniqueIdentifier>{e42ce31c-fcd3-4d35-8a60-00878a257970}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\ModBus">
+      <UniqueIdentifier>{c2359780-4624-4aa3-90ce-4de72e0454f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Dialog">
+      <UniqueIdentifier>{13d63241-cfcd-45fe-afc2-8ea1a14a7fe0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Dialog">
+      <UniqueIdentifier>{125eeed8-c153-4af8-b664-541a41985826}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\ModBus">
+      <UniqueIdentifier>{a8d8946d-4237-4253-b836-956320ba613c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Access">
+      <UniqueIdentifier>{0171c5a0-a722-4284-9cec-1a128414cea8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Control">
+      <UniqueIdentifier>{eb877331-dcd6-4ed0-8735-66f4ed9e15af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Control">
+      <UniqueIdentifier>{bc3495aa-8669-4cec-badf-eea63c12114d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Motor">
+      <UniqueIdentifier>{f25f1831-3b92-47e3-9d02-a4d141151a93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Motor">
+      <UniqueIdentifier>{1d440875-c532-468e-a67c-3044641250ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\other">
+      <UniqueIdentifier>{7c36845f-685d-4e57-a7d8-1907cff21c96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\other">
+      <UniqueIdentifier>{9b7e7288-8f06-4e40-9c1b-6bd48a96373a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\SQL">
+      <UniqueIdentifier>{8d3b02e9-a83e-4d57-8c65-ba666d58cdb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\SQL">
+      <UniqueIdentifier>{af6945cd-33a7-401a-8d19-818c54d44e5a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DetectionDlg.h">
+      <Filter>头文件\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="MainDlg.h">
+      <Filter>头文件\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="ModBus.h">
+      <Filter>头文件\ModBus</Filter>
+    </ClInclude>
+    <ClInclude Include="Control.h">
+      <Filter>头文件\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="DataBaseAcc.h">
+      <Filter>头文件\Access</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStruct.h">
+      <Filter>头文件\Access</Filter>
+    </ClInclude>
+    <ClInclude Include="MotorSL.h">
+      <Filter>头文件\Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="MotorLpDlg.h">
+      <Filter>头文件\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="ParamDlg.h">
+      <Filter>头文件\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="actutltype1.h">
+      <Filter>头文件\other</Filter>
+    </ClInclude>
+    <ClInclude Include="CActUtlType.h">
+      <Filter>头文件\other</Filter>
+    </ClInclude>
+    <ClInclude Include="CMSComm.h">
+      <Filter>头文件\other</Filter>
+    </ClInclude>
+    <ClInclude Include="Detection.h">
+      <Filter>头文件\other</Filter>
+    </ClInclude>
+    <ClInclude Include="mscomm1.h">
+      <Filter>头文件\other</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件\other</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件\other</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件\other</Filter>
+    </ClInclude>
+    <ClInclude Include="ReprotDlg.h">
+      <Filter>头文件\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="UserDlg.h">
+      <Filter>头文件\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLUser.h">
+      <Filter>头文件\SQL</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLErr.h">
+      <Filter>头文件\SQL</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrInfoDlg.h">
+      <Filter>头文件\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="MReportDlg.h">
+      <Filter>头文件\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="ModBusDlg.h">
+      <Filter>头文件\ModBus</Filter>
+    </ClInclude>
+    <ClInclude Include="RecipeDlg.h">
+      <Filter>头文件\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="CDLF_Button.h">
+      <Filter>头文件\other</Filter>
+    </ClInclude>
+    <ClInclude Include="SetValueDlg.h">
+      <Filter>头文件\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="MotorRDDlg.h">
+      <Filter>头文件\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLResultRD.h">
+      <Filter>头文件\SQL</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLRecipe_CH.h">
+      <Filter>头文件\SQL</Filter>
+    </ClInclude>
+    <ClInclude Include="ReprotAllDlg.h">
+      <Filter>头文件\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLResult_All.h">
+      <Filter>头文件\SQL</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DetectionDlg.cpp">
+      <Filter>源文件\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="MainDlg.cpp">
+      <Filter>源文件\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="ModBus.cpp">
+      <Filter>源文件\ModBus</Filter>
+    </ClCompile>
+    <ClCompile Include="Control.cpp">
+      <Filter>源文件\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="DataBaseAcc.cpp">
+      <Filter>源文件\access</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStruct.cpp">
+      <Filter>源文件\access</Filter>
+    </ClCompile>
+    <ClCompile Include="MotorSL.cpp">
+      <Filter>源文件\Motor</Filter>
+    </ClCompile>
+    <ClCompile Include="ReprotDlg.cpp">
+      <Filter>源文件\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="MotorLpDlg.cpp">
+      <Filter>源文件\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="ParamDlg.cpp">
+      <Filter>源文件\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="actutltype1.cpp">
+      <Filter>源文件\other</Filter>
+    </ClCompile>
+    <ClCompile Include="CActUtlType.cpp">
+      <Filter>源文件\other</Filter>
+    </ClCompile>
+    <ClCompile Include="CMSComm.cpp">
+      <Filter>源文件\other</Filter>
+    </ClCompile>
+    <ClCompile Include="Detection.cpp">
+      <Filter>源文件\other</Filter>
+    </ClCompile>
+    <ClCompile Include="mscomm1.cpp">
+      <Filter>源文件\other</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件\other</Filter>
+    </ClCompile>
+    <ClCompile Include="UserDlg.cpp">
+      <Filter>源文件\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLUser.cpp">
+      <Filter>源文件\SQL</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLErr.cpp">
+      <Filter>源文件\SQL</Filter>
+    </ClCompile>
+    <ClCompile Include="ErrInfoDlg.cpp">
+      <Filter>源文件\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="MReportDlg.cpp">
+      <Filter>源文件\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="ModBusDlg.cpp">
+      <Filter>源文件\ModBus</Filter>
+    </ClCompile>
+    <ClCompile Include="RecipeDlg.cpp">
+      <Filter>源文件\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="CDLF_Button.cpp">
+      <Filter>源文件\other</Filter>
+    </ClCompile>
+    <ClCompile Include="SetValueDlg.cpp">
+      <Filter>源文件\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="MotorRDDlg.cpp">
+      <Filter>源文件\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLResultRD.cpp">
+      <Filter>源文件\SQL</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLRecipe_CH.cpp">
+      <Filter>源文件\SQL</Filter>
+    </ClCompile>
+    <ClCompile Include="ReprotAllDlg.cpp">
+      <Filter>源文件\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLResult_All.cpp">
+      <Filter>源文件\SQL</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Detection.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Detection.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\Detection.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\大框.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\小框.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

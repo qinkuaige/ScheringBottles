@@ -65,22 +65,37 @@ CImage* Camera::get_image()
 		return NULL;
 	}
 	
-	CImage*  picture  = new CImage;
-	//picture->Create(image->width, image->highly, 32 ,Cmage::createAlphaChannel);
-	picture->CreateEx(image->width, image->highly, 32, 0);
-	auto x_pixel = image->width * 3; //每行像素点拆分为 R G B 
-	for (int y = 0; y < image->highly; y++)
+	CImage*  picture = new CImage; 
+	
+	if (picture->IsNull())
 	{
-		auto y_pixel = y * x_pixel; //第y行第一个像素点
-		for (int x = 0; x < image->width; x++)
+		picture->Create(image->width,image->highly, 8 * 1);
+
+		//设置调色板
+		RGBQUAD* ColorTable;
+		int MaxColors = 256;
+		ColorTable = new RGBQUAD[MaxColors];
+
+		for (int i = 0; i < MaxColors; i++)
 		{
-			auto current_pixel = x * 3;
-			
-			picture->SetPixelRGB(x, y, image->data[y_pixel + current_pixel], image->data[y_pixel + current_pixel + 1], current_pixel + 2);
+			ColorTable[i].rgbBlue = (BYTE)i;  
+			ColorTable[i].rgbGreen = (BYTE)i;
+			ColorTable[i].rgbRed = (BYTE)i;
+		}
+		picture->SetColorTable(0, MaxColors, ColorTable);
+		delete[]ColorTable;
+	}
+
+	{//灰度图像   
+		UCHAR *pImg = (UCHAR *)picture->GetBits();
+		int step = picture->GetPitch();
+		for (int i = 0; i < image->highly; i++)
+		{
+			memcpy(pImg + step * i, image->data + image->width * i, image->width);
 		}
 	}
 	m_Image.pop_front();
-	ReleaseMutex(m_mutex); //解锁
+	ReleaseMutex(m_mutex);
 	return picture;
 }
 

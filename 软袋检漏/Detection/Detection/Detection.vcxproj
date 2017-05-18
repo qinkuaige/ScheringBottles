@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{24D91286-D850-4283-961F-B6EAA9695A34}</ProjectGuid>
+    <RootNamespace>Detection</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>odbc32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>odbc32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="actutltype1.h" />
+    <ClInclude Include="CActUtlType.h" />
+    <ClInclude Include="CDLF_Button.h" />
+    <ClInclude Include="CMSComm.h" />
+    <ClInclude Include="Control.h" />
+    <ClInclude Include="DataBaseAcc.h" />
+    <ClInclude Include="DataStruct.h" />
+    <ClInclude Include="Detection.h" />
+    <ClInclude Include="DetectionDlg.h" />
+    <ClInclude Include="ErrInfoDlg.h" />
+    <ClInclude Include="MainDlg.h" />
+    <ClInclude Include="ModBus.h" />
+    <ClInclude Include="ModBusDlg.h" />
+    <ClInclude Include="MotorLpDlg.h" />
+    <ClInclude Include="MotorRDDlg.h" />
+    <ClInclude Include="MotorSL.h" />
+    <ClInclude Include="MReportDlg.h" />
+    <ClInclude Include="mscomm1.h" />
+    <ClInclude Include="ParamDlg.h" />
+    <ClInclude Include="RecipeDlg.h" />
+    <ClInclude Include="ReprotAllDlg.h" />
+    <ClInclude Include="ReprotDlg.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="SetValueDlg.h" />
+    <ClInclude Include="SQLErr.h" />
+    <ClInclude Include="SQLRecipe_CH.h" />
+    <ClInclude Include="SQLResultRD.h" />
+    <ClInclude Include="SQLResult_All.h" />
+    <ClInclude Include="SQLUser.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="UserDlg.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="actutltype1.cpp" />
+    <ClCompile Include="CActUtlType.cpp" />
+    <ClCompile Include="CDLF_Button.cpp" />
+    <ClCompile Include="CMSComm.cpp" />
+    <ClCompile Include="Control.cpp" />
+    <ClCompile Include="DataBaseAcc.cpp" />
+    <ClCompile Include="DataStruct.cpp" />
+    <ClCompile Include="Detection.cpp" />
+    <ClCompile Include="DetectionDlg.cpp" />
+    <ClCompile Include="ErrInfoDlg.cpp" />
+    <ClCompile Include="MainDlg.cpp" />
+    <ClCompile Include="ModBus.cpp" />
+    <ClCompile Include="ModBusDlg.cpp" />
+    <ClCompile Include="MotorLpDlg.cpp" />
+    <ClCompile Include="MotorRDDlg.cpp" />
+    <ClCompile Include="MotorSL.cpp" />
+    <ClCompile Include="MReportDlg.cpp" />
+    <ClCompile Include="mscomm1.cpp" />
+    <ClCompile Include="ParamDlg.cpp" />
+    <ClCompile Include="RecipeDlg.cpp" />
+    <ClCompile Include="ReprotAllDlg.cpp" />
+    <ClCompile Include="ReprotDlg.cpp" />
+    <ClCompile Include="SetValueDlg.cpp" />
+    <ClCompile Include="SQLErr.cpp" />
+    <ClCompile Include="SQLRecipe_CH.cpp" />
+    <ClCompile Include="SQLResultRD.cpp" />
+    <ClCompile Include="SQLResult_All.cpp" />
+    <ClCompile Include="SQLUser.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UserDlg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Detection.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Detection.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\Detection.ico" />
+    <Image Include="res\大框.bmp" />
+    <Image Include="res\小框.bmp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties _x007B_648A5600-2C6E-101B-82B6-000000000014_x007D_="CMscomm1" RESOURCE_FILE="Detection.rc" _x007B_63885648-1785-41A4-82D5-C578D29E4DA8_x007D_="CActutltype1" _x007B_26151E11-E742-4EBF-ADBE-5C1253D57092_x007D_="CDLF_Button" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
