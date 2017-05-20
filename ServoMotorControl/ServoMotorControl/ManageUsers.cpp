@@ -16,11 +16,11 @@ ManageUsers::ManageUsers(CWnd* pParent )
 	: CDialogEx(ManageUsers::IDD, pParent)
 {
 	m_chidWindow.clear();
-	CDialogEx *window = new AddUser();
+	CDialogEx *window = new AddUser(this);
 	m_chidWindow[IDD_DIALOG4] = window;
-	window = new DeleteUser();
+	window = new DeleteUser(this);
 	m_chidWindow[IDD_DIALOG5] = window;
-	window = new ChangePassword();
+	window = new ChangePassword(this);
 	m_chidWindow[IDD_DIALOG6] = window;
 	m_childWindow_itor = m_chidWindow.end();
 }

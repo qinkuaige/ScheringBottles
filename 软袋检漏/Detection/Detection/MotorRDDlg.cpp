@@ -77,7 +77,7 @@ INT CMotorRDDlg::ChSpeed(INT speed)
 	m_pMotor->ComSetSpeed(speed);
 	return TRUE;
 }
-
+//改变网带速度
 INT  CMotorRDDlg::MbSpeed(INT speed)
 {
 	m_pMotor->ComSetmbSpeed(speed);
@@ -418,11 +418,11 @@ void CMotorRDDlg::ClickDiYa()
 void CMotorRDDlg::OnBnClickedMbSpeed()
 {
 	ParamStruct data;
-	data.m_max = 150;
+	data.m_max = 150;  //网带速度最高150
 	CSetValueDlg setDlg;
 	if (setDlg.showDlg(data) == IDYES)
 	{
 		LONG speed = data;
-		ChSpeed(speed);
+		MbSpeed(speed);
 	}
 }
