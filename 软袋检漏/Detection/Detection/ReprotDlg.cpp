@@ -1,5 +1,4 @@
 // ReprotDlg.cpp : 实现文件
-//
 
 #include "stdafx.h"
 #include "Detection.h"
@@ -176,7 +175,7 @@ INT CReprotDlg::insertList(LONGLONG startT, LONGLONG endT)
 			str.Format(_T("%.2f"), res.m_CH5*1.0 / 100);
 			m_rList.SetItemText(count, 6, str);//CH5
 			str.Format(_T("%.2f"), res.m_CH6*1.0 / 100);
-			m_rList.SetItemText(count, 6, str);//CH5
+			m_rList.SetItemText(count, 6, str);//CH6
 
 			str.Format(_T("%.2f"), res.m_NG*1.0 / 100);
 			m_rList.SetItemText(count, 7, str);//NG

@@ -265,6 +265,13 @@ void CMotorRDDlg::OnTimer(UINT_PTR nIDEvent)
 		data[1] = 0;
 		m_pMotor->ComGetValue(_T("D578"), data, 2);//获取数据
 		SetDlgItemInt(IDC_SPEED, getValue(data));
+
+
+		//网带速度
+		data[0] = 0;
+		data[1] = 0;
+		m_pMotor->ComGetValue(_T("D690"), data, 1);//获取数据
+		SetDlgItemInt(IDC_MESH_SPEED, getValue(data));
 		{
 			//获取同步状态
 			LONG value = FALSE;

@@ -307,7 +307,7 @@ void CDetectionDlg::OnShowWindow(BOOL bShow, UINT nStatus)
 
 void CDetectionDlg::LButtonUpReport4(long ID, LPCTSTR addr, long other)
 {
-	showMenu(m_mReportDLg.IDD);
+	showMenu(m_mReportDLg.IDD); 
 }
 
 

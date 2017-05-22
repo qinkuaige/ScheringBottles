@@ -417,7 +417,7 @@ void CMotorLpDlg::OnTimer(UINT_PTR nIDEvent)
 	//网带速度
 	data[0] = 0;
 	m_pMotor->ComGetValue(_T("D578"), data,1);//获取数据
-	SetDlgItemInt(IDC_MESH_SPEED, data[0]);
+	SetDlgItemInt(IDC_MESH_SPEED, getValue(data));
 	/*
 	//总数
 	//m_pMotor->ComGetValue(_T("D360"), data, 2);//获取数据
