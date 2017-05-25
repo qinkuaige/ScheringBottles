@@ -161,7 +161,7 @@ INT CReprotDlg::insertList(LONGLONG startT, LONGLONG endT)
 			//批号因为有20个字符，
 			//后面会自动补成空格所以去掉多余的空格
 			INT sub = res.m_PH.Find(_T(" "));
-			res.m_PH = res.m_PH.Left(sub);
+			//res.m_PH = res.m_PH.Right(sub);
 			m_rList.SetItemText(count, 2, res.m_PH);
 
 			str.Format(_T("%.2f"), res.m_CH1*1.0/100);
@@ -173,12 +173,12 @@ INT CReprotDlg::insertList(LONGLONG startT, LONGLONG endT)
 			str.Format(_T("%.2f"), res.m_CH4*1.0 / 100);
 			m_rList.SetItemText(count, 6, str);//CH4
 			str.Format(_T("%.2f"), res.m_CH5*1.0 / 100);
-			m_rList.SetItemText(count, 6, str);//CH5
+			m_rList.SetItemText(count,7, str);//CH5
 			str.Format(_T("%.2f"), res.m_CH6*1.0 / 100);
-			m_rList.SetItemText(count, 6, str);//CH6
+			m_rList.SetItemText(count,8, str);//CH6
 
 			str.Format(_T("%.2f"), res.m_NG*1.0 / 100);
-			m_rList.SetItemText(count, 7, str);//NG
+			m_rList.SetItemText(count, 9, str);//NG
 			++count;
 			res.MoveNext();
 		}
