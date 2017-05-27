@@ -237,7 +237,7 @@ void CMainDlg::OnTimer(UINT_PTR nIDEvent)
 		all = (USHORT)m_pControl->m_motor.m_data[P_AllNum] + (USHORT)m_pControl->m_motor.m_data[P_AllNum + 1] * 65536;
 		SetDlgItemInt(IDC_M_ALL_NUM, all);
 		//»µÆ·Êý
-		bad = (USHORT)m_pControl->m_motor.m_data[P_BadNum] + (USHORT)m_pControl->m_motor.m_data[P_BadNum] * 65536;
+		bad = (USHORT)m_pControl->m_motor.m_data[P_BadNum] + (USHORT)m_pControl->m_motor.m_data[P_BadNum + 1] * 65536;
 		SetDlgItemInt(IDC_M_BAD_NUM, bad);
 		if (all == 0)
 		{
