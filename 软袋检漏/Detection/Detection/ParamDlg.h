@@ -18,7 +18,7 @@ public:
 	INT initDialog(CDetectionDlg* parentdlg);//创建窗口
 	INT showDialog(UINT dialogID);//显示窗口
 	INT updataList();
-	INT changParam(CString name, INT sub, INT ParamID);//修改参数
+	INT changParam(CString name, INT sub, INT ParamID, const UINT coefficient = 100);//修改参数
 
 private:
 	CDetectionDlg* m_pDlg;

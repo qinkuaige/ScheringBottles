@@ -204,14 +204,14 @@ INT CParamDlg::updataList()
 }
 
 //修改参数
-INT CParamDlg::changParam(CString name, INT sub, INT ParamID)
+INT CParamDlg::changParam(CString name, INT sub, INT ParamID, const UINT coefficient)
 {
 	ParamStruct data;
 	data.m_name = name;
 	CSetValueDlg setDlg;
 	if (setDlg.showDlg(data) == IDYES)
 	{
-		LONG value = data  * 100;
+		LONG value = (double)data  * (LONG)coefficient;
 		m_pControl->m_modbus[sub].ComSetParam(ParamID, value);
 	}
 	return TRUE;
@@ -325,35 +325,35 @@ void CParamDlg::OnStnClickedPLdown6()
 
 void CParamDlg::OnStnClickedPLmd1()
 {
-	changParam(_T("CH1泄漏电压下限"), 0, LMD1);
+	changParam(_T("CH1泄漏电压下限"), 0, LMD1,1);
 }
 
 void CParamDlg::OnStnClickedPLmd2()
 {
-	changParam(_T("CH2泄漏电压下限"), 0, LMD2);
+	changParam(_T("CH2泄漏电压下限"), 0, LMD2,1);
 }
 
 
 void CParamDlg::OnStnClickedPLmd3()
 {
-	changParam(_T("CH3泄漏电压下限"), 1, LMD1);
+	changParam(_T("CH3泄漏电压下限"), 1, LMD1,1);
 }
 
 
 void CParamDlg::OnStnClickedPLmd4()
 {
-	changParam(_T("CH4泄漏电压下限"), 1, LMD2);
+	changParam(_T("CH4泄漏电压下限"), 1, LMD2,1);
 }
 
 void CParamDlg::OnStnClickedPLmd5()
 {
-	changParam(_T("CH5泄漏电压下限"), 2, LMD1);
+	changParam(_T("CH5泄漏电压下限"), 2, LMD1,1);
 }
 
 
 void CParamDlg::OnStnClickedPLmd6()
 {
-	changParam(_T("CH6泄漏电压下限"), 2, LMD2);
+	changParam(_T("CH6泄漏电压下限"), 2, LMD2,1);
 }
 
 void CParamDlg::OnBnClickedRecipeDlg()
