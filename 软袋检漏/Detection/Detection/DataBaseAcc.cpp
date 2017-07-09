@@ -24,9 +24,7 @@ DataBaseAcc::~DataBaseAcc()
 	}
 	if (m_pRecordsetR != NULL && m_pRecordsetR->State)
 	{
-		//m_pRecordsetR->Close();
-		//delete m_pRecordsetR;
-		//m_pRecordsetR = NULL;
+		
 	}
 	if (m_pConnection != NULL && m_pConnection->State)
 	{
